@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<HBox alignment="CENTER" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                HBox.hgrow="ALWAYS">
+        <top>
+            <Label text="Czynniki" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                </BorderPane.margin>
+                <font>
+                    <Font size="25.0"/>
+                </font>
+         </Label>
+        </top>
+        <fx:define>
+            <ToggleGroup fx:id="MoneySize"/>
+            <ToggleGroup fx:id="TeamSize"/>
+            <ToggleGroup fx:id="TimeSize"/>
+            <ToggleGroup fx:id="RequirementStability"/>
+            <ToggleGroup fx:id="ProblemKnowledge"/>
+            <ToggleGroup fx:id="FormalSize"/>
+            <ToggleGroup fx:id="InnovationSize"/>
+            <ToggleGroup fx:id="DevelopersSkills"/>
+            <ToggleGroup fx:id="QualitySize"/>
+        </fx:define>
+        <center>
+            <Accordion>
+                <panes>
+                    <TitledPane text="Wielkość projektu ($)">
+                        <VBox>
+                            <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$MoneySize"/>
+                            <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$MoneySize"/>
+                            <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$MoneySize"/>
+                        </VBox>
+                    </TitledPane>
+                    <TitledPane text="Wielkość zespołu">
+                        <VBox>
+                            <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$TeamSize"/>
+                            <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$TeamSize"/>
+                            <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$TeamSize"/>
+                        </VBox>
+                    </TitledPane>
+                    <TitledPane text="Czas trwania">
+                        <content>
+                            <VBox>
+                                <children>
+                                    <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$TimeSize"/>
+                                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$TimeSize"/>
+                                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$TimeSize"/>
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane text="Stabilność wymagań">
+                        <content>
+                            <VBox>
+                                <children>
+                                    <RadioButton mnemonicParsing="false" text="Nie"
+                                                 toggleGroup="$RequirementStability"/>
+                                    <RadioButton mnemonicParsing="false" text="Tak"
+                                                 toggleGroup="$RequirementStability"/>
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane text="Czy dziedzina znana zespołowi">
+                        <content>
+                            <VBox>
+                                <children>
+                                    <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$ProblemKnowledge"/>
+                                    <RadioButton mnemonicParsing="false" text="Średnie"
+                                                 toggleGroup="$ProblemKnowledge"/>
+                                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$ProblemKnowledge"/>
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane text="Wymagany poziom sformalizowania">
+                        <content>
+                            <VBox>
+                                <children>
+                                    <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$FormalSize"/>
+                                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$FormalSize"/>
+                                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$FormalSize"/>
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane text="Stopień innowacyjności projektu">
+                        <content>
+                            <VBox>
+                                <children>
+                                    <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$InnovationSize"/>
+                                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$InnovationSize"/>
+                                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$InnovationSize"/>
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane text="Poziom zaawansowania zespołu deweloperskiego">
+                        <content>
+                            <VBox>
+                                <children>
+                                    <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$DevelopersSkills"/>
+                                    <RadioButton mnemonicParsing="false" text="Średnie"
+                                                 toggleGroup="$DevelopersSkills"/>
+                                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$DevelopersSkills"/>
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                    <TitledPane text="Wymagany poziom jakości">
+                        <content>
+                            <VBox>
+                                <children>
+                                    <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$QualitySize"/>
+                                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$QualitySize"/>
+                                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$QualitySize"/>
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+                </panes>
+            </Accordion>
+        </center>
+        <bottom>
+            <Button onAction="#Calculate" text="Wyznacz" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+                </BorderPane.margin>
+         </Button>
+        </bottom>
+        <HBox.margin>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+        </HBox.margin>
+    </BorderPane>
+    <VBox alignment="TOP_CENTER">
+        <Label text="Wynik">
+         <font>
+             <Font size="20.0"/>
+         </font>
+        </Label>
+        <TreeTableView minHeight="700" minWidth="700.0" fx:id="table">
+            <columnResizePolicy>
+                <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TreeTableView>
+    </VBox>
+</HBox>
