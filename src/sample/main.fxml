@@ -1,300 +1,302 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<HBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <children>
-       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS">
-           <top>
-               <Label text="Czynniki" BorderPane.alignment="CENTER">
-                   <BorderPane.margin>
-                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                   </BorderPane.margin>
-                   <font>
-                       <Font size="25.0" />
-                   </font>
-            </Label>
-           </top>
-           <bottom>
-               <Button alignment="CENTER" onAction="#Calculate" text="Wyznacz" BorderPane.alignment="CENTER">
-                   <BorderPane.margin>
-                       <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                   </BorderPane.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-           </bottom>
-           <HBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-           </HBox.margin>
-         <center>
+<HBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                HBox.hgrow="ALWAYS">
+        <top>
+            <Label text="Czynniki" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </BorderPane.margin>
+                <font>
+                    <Font size="25.0"/>
+                </font>
+         </Label>
+        </top>
+        <bottom>
+            <Button alignment="CENTER" onAction="#Calculate" text="Wyznacz" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+                </BorderPane.margin>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+         </Button>
+        </bottom>
+        <HBox.margin>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+        </HBox.margin>
+        <center>
             <HBox prefHeight="100.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox prefWidth="200.0">
-                     <children>
-                        <Label text="Wielkość projektu ($)">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <RadioButton mnemonicParsing="false" text="Małe">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="MoneySize" />
-                           </toggleGroup>
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$MoneySize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$MoneySize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <Separator>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </Separator>
-                        <Label text="Wielkość zespołu">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="-0.0" />
-                           </VBox.margin>
-                        </Label>
-                        <RadioButton mnemonicParsing="false" text="Małe">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="TeamSize" />
-                           </toggleGroup>
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$TeamSize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$TeamSize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <Separator>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </Separator>
-                        <Label text="Czas trwania">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <RadioButton mnemonicParsing="false" text="Małe">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="TimeSize" />
-                           </toggleGroup>
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$TimeSize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$TimeSize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <Separator>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </Separator>
-                        <Label text="Stabilność wymagań">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <RadioButton mnemonicParsing="false" text="Nie">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="RequirementStability" />
-                           </toggleGroup>
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Tak" toggleGroup="$RequirementStability">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <Separator>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </Separator>
-                        <Label text="Czy dziedzina znana zespołowi">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <RadioButton mnemonicParsing="false" text="Małe">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="ProblemKnowledge" />
-                           </toggleGroup>
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$ProblemKnowledge">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$ProblemKnowledge">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                     </children>
-                  </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <VBox prefWidth="200.0">
-                     <children>
-                        <Label text="Wymagany poziom sformalizowania" wrapText="true">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <RadioButton mnemonicParsing="false" text="Małe">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="FormalSize" />
-                           </toggleGroup>
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$FormalSize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$FormalSize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <Separator>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </Separator>
-                        <Label text="Stopień innowacyjności projektu">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" />
-                           </VBox.margin></Label>
-                        <RadioButton mnemonicParsing="false" text="Małe">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="InnovationSize" />
-                           </toggleGroup>
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$InnovationSize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin></RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$InnovationSize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin></RadioButton>
-                        <Separator>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin></Separator>
-                        <Label text="Poziom doświadczenia deweloperów" wrapText="true">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" />
-                           </VBox.margin></Label>
-                         <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$DevelopersSkills">
-                             <toggleGroup>
-                                 <ToggleGroup fx:id="DevelopersSkills" />
-                             </toggleGroup>
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                         </RadioButton>
-                         <RadioButton mnemonicParsing="false" text="Średnie">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin></RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$DevelopersSkills">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin></RadioButton>
-                        <Separator>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin></Separator>
-                        <Label text="Wymagany poziom jakości">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" />
-                           </VBox.margin></Label>
-                         <RadioButton mnemonicParsing="false" text="Małe">
-                             <toggleGroup>
-                                 <ToggleGroup fx:id="QualitySize" />
-                             </toggleGroup>
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin>
-                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$QualitySize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin></RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$QualitySize">
-                           <VBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </VBox.margin></RadioButton>
-                     </children>
-                  </VBox>
-               </children>
+                <VBox prefWidth="200.0">
+                    <Label text="Wielkość projektu ($)">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton mnemonicParsing="false" text="Małe">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="MoneySize"/>
+                        </toggleGroup>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$MoneySize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$MoneySize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </VBox.margin>
+                    </Separator>
+                    <Label text="Wielkość zespołu">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="-0.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton mnemonicParsing="false" text="Małe">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="TeamSize"/>
+                        </toggleGroup>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$TeamSize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$TeamSize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </VBox.margin>
+                    </Separator>
+                    <Label text="Czas trwania">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton mnemonicParsing="false" text="Małe">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="TimeSize"/>
+                        </toggleGroup>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$TimeSize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$TimeSize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </VBox.margin>
+                    </Separator>
+                    <Label text="Stabilność wymagań">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton mnemonicParsing="false" text="Nie">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="RequirementStability"/>
+                        </toggleGroup>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Tak" toggleGroup="$RequirementStability">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </VBox.margin>
+                    </Separator>
+                    <Label text="Czy dziedzina znana zespołowi">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton mnemonicParsing="false" text="Małe">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="ProblemKnowledge"/>
+                        </toggleGroup>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$ProblemKnowledge">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$ProblemKnowledge">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                </VBox>
+                <Separator orientation="VERTICAL" prefHeight="200.0"/>
+                <VBox prefWidth="200.0">
+                    <Label text="Wymagany poziom sformalizowania" wrapText="true">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton mnemonicParsing="false" text="Małe">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="FormalSize"/>
+                        </toggleGroup>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$FormalSize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$FormalSize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </VBox.margin>
+                    </Separator>
+                    <Label text="Stopień innowacyjności projektu">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton mnemonicParsing="false" text="Małe">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="InnovationSize"/>
+                        </toggleGroup>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$InnovationSize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$InnovationSize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </VBox.margin>
+                    </Separator>
+                    <Label text="Poziom doświadczenia deweloperów" wrapText="true">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton mnemonicParsing="false" text="Małe" toggleGroup="$DevelopersSkills">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="DevelopersSkills"/>
+                        </toggleGroup>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Średnie">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$DevelopersSkills">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </VBox.margin>
+                    </Separator>
+                    <Label text="Wymagany poziom jakości">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <RadioButton mnemonicParsing="false" text="Małe">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="QualitySize"/>
+                        </toggleGroup>
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Średnie" toggleGroup="$QualitySize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                    <RadioButton mnemonicParsing="false" text="Duże" toggleGroup="$QualitySize">
+                        <VBox.margin>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                        </VBox.margin>
+                    </RadioButton>
+                </VBox>
             </HBox>
-         </center>
-       </BorderPane>
-       <BorderPane prefHeight="200.0" prefWidth="200.0">
-           <top>
-               <Label text="Wynik" BorderPane.alignment="CENTER">
-                   <font>
-                       <Font size="25.0" />
-                   </font>
-               <BorderPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </BorderPane.margin>
-               </Label>
-           </top>
-           <center>
-               <TreeTableView fx:id="table" minHeight="500" minWidth="750.0" BorderPane.alignment="CENTER">
-                   <columnResizePolicy>
-                       <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                   </columnResizePolicy>
-                   <BorderPane.margin>
-                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                   </BorderPane.margin>
-               </TreeTableView>
-           </center>
-       </BorderPane>
-   </children>
+        </center>
+    </BorderPane>
+    <BorderPane prefHeight="200.0" prefWidth="200.0">
+        <top>
+            <Label text="Wynik" BorderPane.alignment="CENTER">
+                <font>
+                    <Font size="25.0"/>
+                </font>
+                <BorderPane.margin>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </BorderPane.margin>
+            </Label>
+        </top>
+        <center>
+            <TreeTableView fx:id="table" minHeight="500" minWidth="750.0" BorderPane.alignment="CENTER">
+                <columnResizePolicy>
+                    <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+                <BorderPane.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </BorderPane.margin>
+            </TreeTableView>
+        </center>
+    </BorderPane>
 </HBox>
