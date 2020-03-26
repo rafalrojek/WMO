@@ -14,6 +14,7 @@ public class Controller {
     @FXML public ToggleGroup InnovationSize;
     @FXML public ToggleGroup DevelopersSkills;
     @FXML public ToggleGroup QualitySize;
+    public Label typeName; //TODO: Tutaj wpisujemy typ projektu 
     private TreeItem<String> root = new TreeItem<>("Zadania");
 
     @FXML
