@@ -4,11 +4,12 @@ import sample.model.enums.CategoriesEnum;
 import sample.model.enums.FactorValues;
 import sample.model.enums.FactorsEnum;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Category {
 
-    protected Map<FactorsEnum, Factor> factors;
+    protected Map<FactorsEnum, Factor> factors = new HashMap<>();
     protected CategoriesEnum nameOfCategory;
 
     public boolean isApplying(EnteredValues enteredValues){
@@ -24,5 +25,9 @@ public abstract class Category {
         Factor factor = Factor.createFactor(factorsEnum,factorValues);
         factors.put(factorsEnum,factor);
         return this;
+    }
+
+    public String getCategoryName(){
+        return nameOfCategory.toString();
     }
 }

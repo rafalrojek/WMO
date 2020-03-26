@@ -2,7 +2,7 @@ package sample.frontend;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-public class Controller {
+public class  Controller {
     @FXML public TreeTableView table;
     @FXML public ToggleGroup MoneySize;
     @FXML public ToggleGroup TeamSize;
