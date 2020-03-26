@@ -2,6 +2,13 @@ package sample.frontend;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import sample.backend.CategoryEngine;
+import sample.model.EnteredValues;
+import sample.model.enums.FactorValues;
+
+import static sample.model.enums.FactorValues.*;
+import static sample.model.enums.FactorsEnum.*;
+
 public class  Controller {
     @FXML public TreeTableView table;
     @FXML public ToggleGroup MoneySize;
@@ -29,28 +36,33 @@ public class  Controller {
 
     public void Calculate() {
         root.getChildren().removeAll();
-        AddToggle(MoneySize);
-        AddToggle(TeamSize);
-        AddToggle(TimeSize);
-        AddToggle(RequirementStability);
-        AddToggle(ProblemKnowledge);
-        AddToggle(FormalSize);
-        AddToggle(InnovationSize);
-        AddToggle(DevelopersSkills);
-        AddToggle(QualitySize);
-
-        table.setRoot(root);
-
+        EnteredValues enteredValues = new EnteredValues()
+                .addFactor(DEVELOPERS_EXP, getValue(DevelopersSkills))
+                .addFactor(FIELD_KNOWLEDGE, getValue(ProblemKnowledge))
+                .addFactor(FORMALIZATION_LEVEL, getValue(FormalSize))
+                .addFactor(INNOVATION_LEVEL,getValue(InnovationSize))
+                .addFactor(PROJECT_SIZE, getValue(MoneySize))
+                .addFactor(QUALITY, getValue(QualitySize))
+                .addFactor(STABILITY, getValue(RequirementStability))
+                .addFactor(TEAM_SIZE,getValue(TeamSize))
+                .addFactor(TIME, getValue(TimeSize));
+        CategoryEngine engine = new CategoryEngine();
+        System.out.println(engine.checkCategory(enteredValues).getCategoryName());
+        typeName.setText(engine.checkCategory(enteredValues).getCategoryName());
     }
 
-    private void AddToggle(ToggleGroup tg) {
+    private FactorValues getValue(ToggleGroup tg) {
         if (tg.getSelectedToggle() != null) {
             RadioButton rb = (RadioButton) tg.getSelectedToggle();
             String name = rb.getText();
-            TreeItem<String> toggle = new TreeItem<>("Toggle");
-            TreeItem<String> add = new TreeItem<>(name);
-            toggle.getChildren().add(add);
-            root.getChildren().add(toggle);
+            switch (name) {
+                case "Małe": return LITTLE;
+                case "Średnie": return MEDIUM;
+                case "Duże": return ALOT;
+                case "Nie": return NO;
+                case "Tak": return YES;
+            }
         }
+        return null;
     }
 }
