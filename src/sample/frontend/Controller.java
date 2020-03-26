@@ -1,6 +1,5 @@
-package sample;
+package sample.frontend;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 public class Controller {
