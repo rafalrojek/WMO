@@ -14,7 +14,7 @@ public class Controller {
     @FXML public ToggleGroup InnovationSize;
     @FXML public ToggleGroup DevelopersSkills;
     @FXML public ToggleGroup QualitySize;
-    public Label typeName; //TODO: Tutaj wpisujemy typ projektu 
+    public Label typeName; //TODO: Tutaj wpisujemy typ projektu
     private TreeItem<String> root = new TreeItem<>("Zadania");
 
     @FXML
@@ -28,7 +28,7 @@ public class Controller {
         table.getColumns().add(column);
     }
 
-    public void Calculate(ActionEvent actionEvent) {
+    public void Calculate() {
         root.getChildren().removeAll();
         AddToggle(MoneySize);
         AddToggle(TeamSize);
