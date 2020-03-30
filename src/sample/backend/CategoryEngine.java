@@ -3,6 +3,8 @@ package sample.backend;
 import sample.model.Category;
 import sample.model.EnteredValues;
 import sample.model.category.*;
+import sample.model.enums.FactorValues;
+import sample.model.enums.FactorsEnum;
 
 import java.util.*;
 
@@ -21,7 +23,7 @@ public class CategoryEngine {
     public Category checkCategory(EnteredValues enteredValues){
         List<Result> result = new LinkedList<>();
         for(Category category : categories){
-            double applying = category.isApplying(enteredValues);
+            double applying = isApplying(enteredValues,category);
             result.add(new Result(applying,category));
         }
         return result.stream()
@@ -29,6 +31,15 @@ public class CategoryEngine {
                 .findFirst()
                 .map(Result::getCategory)
                 .orElseThrow(IllegalStateException::new);
+    }
+
+    private double isApplying(EnteredValues enteredValues, Category category){
+        Map<FactorsEnum, FactorValues> enteredFactors = enteredValues.getFactors();
+        double result = 0.0;
+        for(FactorsEnum factorsEnum: FactorsEnum.values()){
+            result += category.getFactors().get(factorsEnum).isApplied(enteredFactors.get(factorsEnum));
+        }
+        return result;
     }
 
     private static class Result{
