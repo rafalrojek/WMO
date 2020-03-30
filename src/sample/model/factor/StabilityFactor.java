@@ -8,4 +8,8 @@ public class StabilityFactor extends Factor {
     public  StabilityFactor(FactorsEnum factor, FactorValues... values) {
         super(factor, values);
     }
+
+    public StabilityFactor(FactorsEnum factor, Double weight, FactorValues... values) {
+        super(factor, weight, values);
+    }
 }

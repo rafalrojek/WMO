@@ -8,4 +8,9 @@ public class DevelopersExperienceFactor extends Factor {
     public DevelopersExperienceFactor(FactorsEnum factor, FactorValues... values) {
         super(factor, values);
     }
+
+    public DevelopersExperienceFactor(FactorsEnum factor, Double weight, FactorValues... values) {
+        super(factor, weight, values);
+    }
+
 }

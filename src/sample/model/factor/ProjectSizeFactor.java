@@ -8,4 +8,8 @@ public class ProjectSizeFactor extends Factor {
     public  ProjectSizeFactor(FactorsEnum factor, FactorValues... values) {
         super(factor, values);
     }
+
+    public ProjectSizeFactor(FactorsEnum factor, Double weight, FactorValues... values) {
+        super(factor, weight, values);
+    }
 }

@@ -8,4 +8,9 @@ public class FormalizationLevelFactor extends Factor {
     public  FormalizationLevelFactor(FactorsEnum factor, FactorValues... values) {
         super(factor, values);
     }
+
+    public  FormalizationLevelFactor(FactorsEnum factor, Double weight, FactorValues... values) {
+        super(factor, weight, values);
+    }
+
 }

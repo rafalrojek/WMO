@@ -8,4 +8,8 @@ public class QualityFactor extends Factor {
     public  QualityFactor(FactorsEnum factor, FactorValues... values) {
         super(factor, values);
     }
+
+    public QualityFactor(FactorsEnum factor, Double weight, FactorValues... values) {
+        super(factor, weight, values);
+    }
 }

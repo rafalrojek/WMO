@@ -11,14 +11,14 @@ import static sample.model.enums.FactorsEnum.STABILITY;
 public class Rottweiler extends Category {
     public Rottweiler() {
         nameOfCategory = CategoriesEnum.ROTTWEILER;
-        addFactor(PROJECT_SIZE, ALOT)
-                .addFactor(TEAM_SIZE, MEDIUM,ALOT)
-                .addFactor(TIME, MEDIUM,ALOT)
-                .addFactor(FIELD_KNOWLEDGE, LITTLE,MEDIUM)
-                .addFactor(FORMALIZATION_LEVEL, ALOT)
-                .addFactor(INNOVATION_LEVEL, MEDIUM,ALOT)
-                .addFactor(DEVELOPERS_EXP, ALOT)
-                .addFactor(QUALITY, ALOT)
-                .addFactor(STABILITY, YES);
+        addFactor(PROJECT_SIZE, 1., ALOT)
+                .addFactor(TEAM_SIZE, 1., MEDIUM,ALOT)
+                .addFactor(TIME, 1., MEDIUM,ALOT)
+                .addFactor(FIELD_KNOWLEDGE, 1., LITTLE,MEDIUM)
+                .addFactor(FORMALIZATION_LEVEL, 1., ALOT)
+                .addFactor(INNOVATION_LEVEL, 1., MEDIUM,ALOT)
+                .addFactor(DEVELOPERS_EXP, 1., ALOT)
+                .addFactor(QUALITY, 1., ALOT)
+                .addFactor(STABILITY, 1., YES);
     }
 }

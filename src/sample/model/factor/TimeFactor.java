@@ -8,4 +8,8 @@ public class TimeFactor extends Factor{
     public  TimeFactor(FactorsEnum factor, FactorValues... values) {
         super(factor, values);
     }
+
+    public TimeFactor(FactorsEnum factor, Double weight, FactorValues... values) {
+        super(factor, weight, values);
+    }
 }

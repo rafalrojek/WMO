@@ -12,17 +12,17 @@ public abstract class Category {
     protected Map<FactorsEnum, Factor> factors = new HashMap<>();
     protected CategoriesEnum nameOfCategory;
 
-    public boolean isApplying(EnteredValues enteredValues){
+    public double isApplying(EnteredValues enteredValues){
         Map<FactorsEnum, FactorValues> enteredFactors = enteredValues.getFactors();
-        boolean isApplied = true;
+        double result = 0.0;
         for(FactorsEnum factorsEnum: FactorsEnum.values()){
-            if(!factors.get(factorsEnum).isApplied(enteredFactors.get(factorsEnum))) isApplied = false;
+            result += factors.get(factorsEnum).isApplied(enteredFactors.get(factorsEnum));
         }
-        return isApplied;
+        return result;
     }
 
-    public Category addFactor(FactorsEnum factorsEnum, FactorValues... factorValues){
-        Factor factor = Factor.createFactor(factorsEnum,factorValues);
+    public Category addFactor(FactorsEnum factorsEnum, Double weight, FactorValues... factorValues){
+        Factor factor = Factor.createFactor(factorsEnum,weight,factorValues);
         factors.put(factorsEnum,factor);
         return this;
     }

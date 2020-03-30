@@ -12,28 +12,36 @@ import static sample.model.enums.FactorsEnum.*;
 public abstract class Factor {
     protected FactorsEnum factor;
     protected List<FactorValues> values;
+    protected Double weight;
 
     public Factor(FactorsEnum factor, FactorValues... values){
         this.values = Arrays.asList(values);
         this.factor = factor;
     }
 
-    public boolean isApplied(FactorValues value){
-        for(FactorValues v: values){
-            if(v.equals(value)) return true;
-        }
-        return false;
+    public Factor(FactorsEnum factor, Double weight, FactorValues... values){
+        this.values = Arrays.asList(values);
+        this.factor = factor;
+        this.weight = weight;
     }
 
-    public static Factor createFactor(FactorsEnum factorsEnum, FactorValues... factorValues){
-        if(factorsEnum.equals(DEVELOPERS_EXP)) return new DevelopersExperienceFactor(factorsEnum,factorValues);
-        else if(factorsEnum.equals(FIELD_KNOWLEDGE)) return new FieldKnowledgeFactor(factorsEnum,factorValues);
-        else if(factorsEnum.equals(FORMALIZATION_LEVEL)) return new FormalizationLevelFactor(factorsEnum,factorValues);
-        else if(factorsEnum.equals(INNOVATION_LEVEL)) return new InnovationLevelFactor(factorsEnum,factorValues);
-        else if(factorsEnum.equals(PROJECT_SIZE)) return new ProjectSizeFactor(factorsEnum,factorValues);
-        else if(factorsEnum.equals(QUALITY)) return new QualityFactor(factorsEnum,factorValues);
-        else if(factorsEnum.equals(STABILITY)) return new StabilityFactor(factorsEnum,factorValues);
-        else if(factorsEnum.equals(TEAM_SIZE)) return new TeamSizeFactor(factorsEnum,factorValues);
-        else return new TimeFactor(factorsEnum,factorValues);
+
+    public double isApplied(FactorValues value){
+        if(values.contains(value)) return 1.0 * weight;
+        if(value.equals(FactorValues.YES)) return 0.5 * weight;
+        if(values.contains(FactorValues.MEDIUM)) return 0.65 * weight;
+        else return 0.35 * weight;
+    }
+
+    public static Factor createFactor(FactorsEnum factorsEnum, Double weight, FactorValues... factorValues){
+        if(factorsEnum.equals(DEVELOPERS_EXP)) return new DevelopersExperienceFactor(factorsEnum, weight,factorValues);
+        else if(factorsEnum.equals(FIELD_KNOWLEDGE)) return new FieldKnowledgeFactor(factorsEnum, weight,factorValues);
+        else if(factorsEnum.equals(FORMALIZATION_LEVEL)) return new FormalizationLevelFactor(factorsEnum, weight,factorValues);
+        else if(factorsEnum.equals(INNOVATION_LEVEL)) return new InnovationLevelFactor(factorsEnum, weight,factorValues);
+        else if(factorsEnum.equals(PROJECT_SIZE)) return new ProjectSizeFactor(factorsEnum, weight,factorValues);
+        else if(factorsEnum.equals(QUALITY)) return new QualityFactor(factorsEnum, weight,factorValues);
+        else if(factorsEnum.equals(STABILITY)) return new StabilityFactor(factorsEnum, weight,factorValues);
+        else if(factorsEnum.equals(TEAM_SIZE)) return new TeamSizeFactor(factorsEnum, weight,factorValues);
+        else return new TimeFactor(factorsEnum, weight,factorValues);
     }
 }

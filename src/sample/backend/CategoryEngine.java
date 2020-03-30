@@ -4,12 +4,10 @@ import sample.model.Category;
 import sample.model.EnteredValues;
 import sample.model.category.*;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class CategoryEngine {
-    List<Category> categories = new LinkedList<>();
+    private List<Category> categories = new LinkedList<>();
 
     public CategoryEngine() {
         categories = Arrays.asList(new Buldog(),
@@ -21,9 +19,33 @@ public class CategoryEngine {
     }
 
     public Category checkCategory(EnteredValues enteredValues){
+        List<Result> result = new LinkedList<>();
         for(Category category : categories){
-            if(category.isApplying(enteredValues)) return category;
+            double applying = category.isApplying(enteredValues);
+            result.add(new Result(applying,category));
         }
-        return new Doggo();
+        return result.stream()
+                .sorted(Comparator.comparing(Result::getApplying).reversed())
+                .findFirst()
+                .map(Result::getCategory)
+                .orElseThrow(IllegalStateException::new);
+    }
+
+    private static class Result{
+        Double applying;
+        Category category;
+
+        Double getApplying() {
+            return applying;
+        }
+
+        Category getCategory() {
+            return category;
+        }
+
+        Result(Double applying, Category category) {
+            this.applying = applying;
+            this.category = category;
+        }
     }
 }
