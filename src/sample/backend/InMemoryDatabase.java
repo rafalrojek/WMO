@@ -28,6 +28,14 @@ public class InMemoryDatabase {
                 .collect(Collectors.toList());
     }
 
+    public List<CsvRow> getByProduct(CategoriesEnum category, String product){
+        return data.stream()
+                .filter(el -> el.getCategories().contains(category))
+                .filter(el -> el.getProduct().equals(product))
+                .sorted(Comparator.comparing(CsvRow::getActivityId))
+                .collect(Collectors.toList());
+    }
+
     public List<CsvRow> getByRole(String role){
         return data.stream()
                 .filter(el -> el.getRole().equals(role))
@@ -35,8 +43,24 @@ public class InMemoryDatabase {
                 .collect(Collectors.toList());
     }
 
+    public List<CsvRow> getByRole(CategoriesEnum category, String role){
+        return data.stream()
+                .filter(el -> el.getCategories().contains(category))
+                .filter(el -> el.getRole().equals(role))
+                .sorted(Comparator.comparing(CsvRow::getActivityId))
+                .collect(Collectors.toList());
+    }
+
     public List<CsvRow> getByActivity(String activity){
         return data.stream()
+                .filter(el -> el.getActivity().equals(activity))
+                .sorted(Comparator.comparing(CsvRow::getActivityId))
+                .collect(Collectors.toList());
+    }
+
+    public List<CsvRow> getByActivity(CategoriesEnum category, String activity){
+        return data.stream()
+                .filter(el -> el.getCategories().contains(category))
                 .filter(el -> el.getActivity().equals(activity))
                 .sorted(Comparator.comparing(CsvRow::getActivityId))
                 .collect(Collectors.toList());
