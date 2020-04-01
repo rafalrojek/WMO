@@ -4,6 +4,7 @@ import sample.model.CsvRow;
 import sample.model.enums.CategoriesEnum;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,5 +47,13 @@ public class InMemoryDatabase {
                 .filter(el -> el.getCategories().contains(category))
                 .sorted(Comparator.comparing(CsvRow::getActivityId))
                 .collect(Collectors.toList());
+    }
+
+    public List<String> getAllActivities(){
+        return new LinkedList(data.stream().map(CsvRow::getActivity).collect(Collectors.toSet()));
+    }
+
+    public List<String> getAllRoles(){
+        return new LinkedList(data.stream().map(CsvRow::getRole).collect(Collectors.toSet()));
     }
 }
