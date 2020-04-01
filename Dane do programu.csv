@@ -1,0 +1,186 @@
+1;362;Structure the Use-Case Model;Use-Case model (redefined);Manage Changing Requirements;;1;1;1;1;1;1
+2;363;Manage Dependencies;Requirements attributes (redefined);Manage Changing Requirements;;1;0;0;0;1;1
+3;364;Review Requirements;Review record;Manage Changing Requirements;;0;1;1;1;1;1
+4;390;Identify Design Elements;Design Model;Analyze Behavior;Software Architect;0;0;1;1;0;0
+5;390;Identify Design Elements;Interface;Analyze Behavior;Software Architect;1;1;1;1;0;1
+6;391;Use-Case Analysis;Use case realizations (updated);Analyze Behavior;Designer;0;0;0;1;0;0
+7;391;Use-Case Analysis;Analysis Class (detailed);Analyze Behavior;Designer;0;0;1;0;0;1
+8;392;Operation Analysis;;Analyze Behavior;;0;0;0;0;0;1
+9;393;Design the User Interface;Navigation Map;Analyze Behavior;User Interface Designer;0;0;0;0;0;0
+10;394;Prototype the User-Interface;User Interface Prototype;Analyze Behavior;User Interface Designer;1;0;1;1;1;0
+11;395;Review the Design;Review record;Analyze Behavior;Technical Reviewer;0;1;1;1;1;0
+12;398;Functional Area Analysis (SOA);Business Analysis Model;Domain Decomposition (SOA);Business Architect;0;1;1;1;0;0
+13;398;Functional Area Analysis (SOA);Business Architecture Document;Domain Decomposition (SOA);Business Architect;1;0;1;1;1;1
+14;399;Refine a Business Use-Case (SOA);Business Use Case Model;Domain Decomposition (SOA);Business Process Analyst;1;1;0;0;0;1
+15;399;Refine a Business Use-Case (SOA);Supplementary Business Specification;Domain Decomposition (SOA);Business Process Analyst;0;0;1;0;0;0
+16;400;Business Process Analysis (SOA);Service Model;Domain Decomposition (SOA);Software Architect;0;1;1;1;0;1
+17;401;Business Use Case Analysis (SOA);Service Model;Domain Decomposition (SOA);Software Architect;1;0;1;1;0;1
+18;403;Identify Business Goals and KPIs (SOA);Business Goal;Goal-Service Modeling (SOA);Business Process Analyst;1;1;1;1;1;1
+19;404;Identify and Associate Services to Goals (SOA);Goal-Service Model;Goal-Service Modeling (SOA);Designer;1;1;0;1;1;1
+20;406;Existing Asset Analysis (SOA);Service Model;Existing Asset Analysis;Software Architect;1;1;1;1;0;1
+21;407;Data Model Analysis (SOA);Service Model;Existing Asset Analysis;Software Architect;0;0;0;1;0;1
+22;408;Business Rule Analysis (SOA);Service Model;Existing Asset Analysis;Software Architect;0;0;1;0;1;1
+23;409;Construct Architectural Proof-of-Concept (SOA);Architectural Proof-of-Concept;Existing Asset Analysis;Software Architect;0;0;0;0;1;0
+24;411;Use-Case Design;Use Case Model;Design Components;Designer;0;0;0;0;0;1
+25;412;Subsystem Design;Design Subsystem;Design Components;Designer;1;1;1;1;0;1
+26;412;Subsystem Design;Interface;Design Components;Designer;1;1;1;1;1;1
+27;412;Subsystem Design;Design Class;Design Components;Designer;0;0;0;0;0;0
+28;413;Operation Design;;Design Components;;1;0;1;1;1;1
+29;414;Class Design;Design Class;Design Components;Designer;0;0;1;1;0;0
+30;415;Define Testability Elements;Test Interface Specification;Design Components;Test Designer;0;0;1;1;0;1
+31;416;Design Testability Elements;Testability Class;Design Components;Designer;0;1;0;0;0;0
+32;416;Design Testability Elements;Design Package;Design Components;Designer;0;0;0;0;0;0
+33;417;Capsule Design;Design Class;Design Components;Capsule Designer;1;1;1;1;0;1
+34;417;Capsule Design;Capsule;Design Components;Capsule Designer;0;0;0;0;0;0
+35;417;Capsule Design;Protocol;Design Components;Capsule Designer;1;1;1;0;1;1
+36;418;Review the Design;Review Record;Design Components;Technical Reviewer;1;0;0;0;0;0
+37;420;Class Design;Design Class;Design the Database;Designer;1;0;0;0;1;0
+38;421;Specify Data Migration;;Design the Database;;0;1;1;0;0;0
+39;422;Database Design;Data Model;Design the Database;Database Designer;0;0;0;0;0;0
+40;423;Review the Design;Review Record;Design the Database;Technical Reviewer;0;0;0;0;0;0
+41;426;Apply Services Litmus Tests (SOA);Service Model;Perform Service Specification;Software Architect;1;0;1;1;1;0
+42;426;Apply Services Litmus Tests (SOA);Goal-Service Model;Perform Service Specification;Software Architect;1;1;1;1;1;1
+43;427;Service Specification (SOA);Service Model;Perform Service Specification (SOA);Designer;1;0;1;0;1;1
+44;427;Service Specification (SOA);Design Model;Perform Service Specification (SOA);Designer;0;1;1;1;1;1
+45;428;Message Design (SOA);Service Model;Perform Service Specification (SOA);Designer;1;1;1;1;1;1
+46;429;Identify Security Patterns (SOA);Software Architecture Document;Perform Service Specification (SOA);Security Architect;0;0;0;0;0;0
+47;431;Subsystem Design (SOA);Design Model;Subsystem Design (SOA);Designer;0;0;1;0;0;0
+48;433;Component Specification (SOA);Service Component;Perform Component Specification;Designer;1;1;1;1;1;1
+49;436;Document Service Realization Decisions (SOA);Design Model;Service Realization (SOA);Designer;1;1;1;1;1;1
+50;437;Component Specification (SOA);Service Component;Service Realization (SOA);Designer;1;0;1;1;0;0
+51;438;Construct Architectural Proof-of-Concept (SOA);Architectural Proof-of-Concept;Service Realization (SOA);Software Architect;0;0;1;1;0;1
+52;439;Assess Viability of Architectural Proof-of-Concept (SOA);Review Record;Service Realization (SOA);Software Architect;1;1;0;0;1;1
+53;439;Assess Viability of Architectural Proof-of-Concept (SOA);Reference Architecture;Service Realization (SOA);Software Architect;0;0;0;0;0;0
+54;441;Plan Subsystem Integration;Integration Build Plan;Implement Components;Integrator;1;0;0;0;1;0
+55;442;Implement Design Elements;Implementation Element;Implement Components;Implementer;0;0;1;0;1;1
+56;442;Implement Design Elements;Implementation Subsystem;Implement Components;Implementer;0;1;1;0;0;0
+57;443;Analyze Runtime Behavior;Test results;Implement Components;Implementer;0;0;1;0;0;1
+58;444;Implement Testability Elements;Testability Element;Implement Components;Implementer;0;1;0;0;0;0
+59;444;Implement Testability Elements;Test Stub;Implement Components;Implementer;0;0;0;0;1;1
+60;445;Implement Developer Test;Developer Test;Implement Components;Implementer;1;1;1;1;1;1
+61;446;Execute Developer Tests;Test Log;Implement Components;Implementer;1;1;1;0;1;1
+62;447;Review Code;Review Record;Implement Components;Technical Reviewer;0;0;0;0;0;1
+63;450;Define Test Environment Configurations;Test Environment Configuration;Verify Test Approach;Test Designer;0;0;0;0;0;0
+64;451;Identify Testability Mechanisms;Test Automation Architecture;Verify Test Approach;Test Designer;0;0;0;0;0;0
+65;451;Identify Testability Mechanisms;Test Interface Specification;Verify Test Approach;Test Designer;0;1;1;0;0;0
+66;452;Define Testability Elements;Test Automation Architecture;Verify Test Approach;Test Designer;0;1;1;1;1;1
+67;452;Define Testability Elements;Test Interface Specification;Verify Test Approach;Test Designer;1;1;1;0;1;1
+68;452;Define Testability Elements;Test Design;Verify Test Approach;Test Designer;1;1;1;0;1;1
+69;453;Define Test Details;Test Case;Verify Test Approach;Test Analyst;1;1;1;1;0;1
+70;453;Define Test Details;Test Data;Verify Test Approach;Test Analyst;0;0;1;1;0;0
+71;453;Define Test Details;Test script;Verify Test Approach;Test Analyst;1;1;1;0;1;1
+72;453;Define Test Details;Workload Analysis Model;Verify Test Approach;Test Analyst;0;0;0;0;0;0
+73;459;Implement Developer Test;Developer Test;Integrate and Test;Implementer;0;0;0;0;1;1
+74;460;Execute Developer Tests;Test Log;Integrate and Test;Implementer;1;0;0;1;1;1
+75;461;Integrate Subsystem;Build;Integrate and Test;Integrator;0;1;1;1;0;1
+76;461;Integrate Subsystem;Implementation Subsystem;Integrate and Test;Integrator;0;0;0;0;0;0
+77;454;Implement Test;Test Script;Verify Test Approach;Tester;1;1;0;0;1;0
+78;455;Implement Test Suite;Test Suite;Verify Test Approach;Tester;1;1;1;0;1;1
+79;456;Obtain Testability Commitment;Test Plan;Verify Test Approach;Test Manager;0;0;0;0;1;0
+80;459;Implement Developer Test;Developer Test;Integrate and Test;Implementer;1;1;0;0;1;1
+81;460;Execute Developer Tests;Test Log;Integrate and Test;Implementer;0;0;0;0;0;0
+82;461;Integrate Subsystem;Build;Integrate and Test;Integrator;1;0;1;1;1;0
+83;461;Integrate Subsystem;Implementation Subsystem;Integrate and Test;Integrator;0;1;0;0;0;0
+84;463;Integrate System;Build;Integrate the System;Integrator;1;0;1;0;1;1
+85;465;Define Test Details;Test Case;Validate Build Stability;Test Analyst;0;0;0;0;0;0
+86;465;Define Test Details;Test Data;Validate Build Stability;Test Analyst;1;1;1;1;1;1
+87;465;Define Test Details;Test script;Validate Build Stability;Test Analyst;1;1;1;1;1;1
+88;465;Define Test Details;Workload Analysis Model;Validate Build Stability;Test Analyst;0;0;0;0;1;1
+89;466;Implement Test;Test script;Validate Build Stability;Tester;1;1;1;1;1;1
+90;467;Execute Test Suite;Test Log;Validate Build Stability;Tester;0;0;0;0;0;0
+91;468;Analyze Test Failure;Change request;Validate Build Stability;Tester;0;0;0;0;0;0
+92;469;Determine Test Results;Test Evaluation Summary;Validate Build Stability;Test Analyst;1;1;1;1;1;1
+93;469;Determine Test Results;Test Results;Validate Build Stability;Test Analyst;1;1;1;1;1;1
+94;470;Assess and Advocate Quality;Test Evaluation Summary;Validate Build Stability;Test Manager;1;0;0;1;0;0
+95;473;Define Test Details;Test Case;Test and Evaluate;Test Analyst;1;1;1;1;1;1
+96;473;Define Test Details;Test Data;Test and Evaluate;Test Analyst;1;1;1;1;1;0
+97;473;Define Test Details;Test script;Test and Evaluate;Test Analyst;0;1;1;1;1;1
+98;473;Define Test Details;Workload Analysis Model;Test and Evaluate;Test Analyst;1;1;0;1;0;1
+99;474;Implement Test;Test script;Test and Evaluate;Tester;0;0;0;0;0;1
+100;475;Implement Test Suite;Test suite;Test and Evaluate;Tester;1;0;0;0;1;1
+101;476;Execute Test Suite;Test Log;Test and Evaluate;Tester;0;1;1;0;0;0
+102;477;Analyze Test Failure;Change request;Test and Evaluate;Tester;1;1;1;1;1;1
+103;478;Structure the Test Implementation;Test suite;Test and Evaluate;Test Designer;1;1;1;1;1;1
+104;478;Structure the Test Implementation;Test script;Test and Evaluate;Test Designer;1;0;1;1;1;0
+105;479;Identify Test Ideas;Test Ideas List;Test and Evaluate;Test Analyst;0;0;0;0;0;0
+106;479;Identify Test Ideas;Test Ideas List;Test and Evaluate;Test Analyst;0;0;1;0;0;1
+107;480;Determine Test Results;Test Evaluation Summary;Test and Evaluate;Test Analyst;0;1;0;0;0;0
+108;480;Determine Test Results;Test Results;Test and Evaluate;Test Analyst;1;1;1;0;1;0
+109;482;Assess and Improve Test Effort;Test Evaluation Summary;Achieve Acceptable Mission;Test Manager;0;0;1;1;0;0
+110;482;Assess and Improve Test Effort;Test Plan;Achieve Acceptable Mission;Test Manager;0;0;1;1;1;1
+111;483;Assess and Advocate Quality;Test Evaluation Summary;Achieve Acceptable Mission;Test Manager;0;0;0;0;0;0
+112;484;Determine Test Results;Test Evaluation Summary;Achieve Acceptable Mission;Test Analyst;1;0;0;1;1;0
+113;484;Determine Test Results;Test Results;Achieve Acceptable Mission;Test Analyst;0;1;1;0;0;0
+114;486;Prepare Guidelines for the Project;Project-Specific Guidelines;Improve Test Assets;Project Engineer;1;0;0;1;1;0
+115;487;Define Test Approach;Test Strategy;Improve Test Assets;Test Designer;0;0;1;1;1;0
+116;487;Define Test Approach;Test Plan;Improve Test Assets;Test Designer;0;1;1;1;1;1
+117;487;Define Test Approach;Test Environment Configuration;Improve Test Assets;Test Designer;1;1;0;1;1;1
+118;488;Define Testability Elements;Test Automation Architecture;Improve Test Assets;Test Designer;0;1;0;0;1;0
+119;488;Define Testability Elements;Test Interface Specification;Improve Test Assets;Test Designer;1;0;0;1;0;0
+120;488;Define Testability Elements;Test Design;Improve Test Assets;Test Designer;1;1;0;1;0;1
+121;489;Structure the Test Implementation;Test Suite;Improve Test Assets;Test Designer;1;0;0;0;0;0
+122;489;Structure the Test Implementation;Test Script;Improve Test Assets;Test Designer;1;1;1;0;0;1
+123;490;Identify Test Ideas;Test Ideas List;Improve Test Assets;Test Analyst;1;1;1;1;0;1
+124;491;Define Test Details;Test Case;Improve Test Assets;Test Analyst;1;1;0;1;0;0
+125;491;Define Test Details;Test Data;Improve Test Assets;Test Analyst;0;1;0;0;1;0
+126;491;Define Test Details;Test Script;Improve Test Assets;Test Analyst;1;1;0;0;0;0
+127;491;Define Test Details;Workload Analysis Model;Improve Test Assets;Test Analyst;0;0;0;0;0;0
+128;492;Define Assessment and Traceability Needs;Test Plan;Improve Test Assets;Test Analyst;1;0;0;0;0;1
+129;493;Implement Test;Test script;Improve Test Assets;Tester;1;1;1;1;1;1
+130;494;Implement Test Suite;Test Suite;Improve Test Assets;Tester;1;1;1;1;1;1
+131;497;Develop Training Materials;Training Materials;Develop Support Material;Course Developer;1;0;0;0;0;0
+132;498;Develop Support Materials;User Support Material;Develop Support Material;Technical Writer;0;0;0;0;0;0
+133;499;Create Product Artwork;Product Artwork;Develop Support Material;Graphic Artist;1;1;1;1;1;1
+134;500;Develop Installation Work Products;Installation Artifacts;Develop Support Material;Implementer;1;1;1;0;0;0
+135;511;Develop Iteration Plan;Iteration Plan;Plan for Next Iteration;Project Manager;0;0;0;0;0;0
+136;512;Develop Business Case;Business Case;Evaluate Project Scope and Risk;Project Manager;1;1;1;1;1;1
+137;513;Iteration Plan Review;Review Record;Plan for Next Iteration;Management Reviewer;0;1;0;0;0;0
+138;347;Acquire Staff;Software Development Plan;Manage Iteration;Project Manager;1;1;1;1;1;0
+139;348;Initiate Iteration;Work Order;Manage Iteration;Project Manager;0;1;0;0;1;1
+140;349;Iteration Evaluation Criteria Review;Review record;Manage Iteration;Management Reviewer;1;1;1;1;1;1
+141;350;Identify and Assess Risks;Risk list;Manage Iteration;Project Manager;1;0;0;0;1;1
+142;351;Assess Iteration;Iteration Assessment;Manage Iteration;Project Manager;0;0;0;0;0;0
+143;352;Iteration Acceptance Review;Review record;Manage Iteration;Management Reviewer;1;1;1;1;1;1
+144;354;Schedule and Assign Work;Software Development Plan;Monitor & Control Project;Project Manager;0;0;0;1;0;1
+145;354;Schedule and Assign Work;Iteration Plan;Monitor & Control Project;Project Manager;0;0;0;0;0;0
+146;354;Schedule and Assign Work;Work Order;Monitor & Control Project;Project Manager;1;1;0;1;1;1
+147;355;Monitor Project Status;Project Measurements;Monitor & Control Project;Project Manager;1;0;0;0;1;0
+148;355;Monitor Project Status;Risk List;Monitor & Control Project;Project Manager;1;1;1;1;0;1
+149;355;Monitor Project Status;Issues List;Monitor & Control Project;Project Manager;0;0;0;1;0;0
+150;356;Report Status;Status Assessment;Monitor & Control Project;Project Manager;0;1;1;0;0;0
+151;357;Handle Exceptions and Problems;Issues List;Monitor & Control Project;Project Manager;1;0;1;0;0;0
+152;357;Handle Exceptions and Problems;Work Order;Monitor & Control Project;Project Manager;1;1;0;1;0;1
+153;358;Project Review Authority (PRA) Project Review;Review record;Monitor & Control Project;Management Reviewer;1;1;1;1;0;1
+154;359;Organize Review;Review record;Monitor & Control Project;Review Coordinator;1;0;1;0;0;0
+155;360;Conduct Review;Review record;Monitor & Control Project;Reviewer;0;0;1;0;0;0
+156;366;Submit Change Request;Change request;Manage Change Requests;Any Role;1;1;0;1;1;0
+157;367;Update Change Request;Change request;Manage Change Requests;Any Role;0;0;0;0;1;0
+158;368;Review Change Requests;Change request;Manage Change Requests;Change Control Manager;0;1;0;0;0;0
+159;369;Confirm Duplicate or Rejected CR;Change request;Manage Change Requests;Change Control Manager;0;0;0;1;1;0
+160;370;Schedule and Assign Work;Software Development Plan;Manage Change Requests;Project Manager;0;0;0;0;0;1
+161;370;Schedule and Assign Work;Iteration Plan;Manage Change Requests;Project Manager;1;1;1;1;1;1
+162;370;Schedule and Assign Work;Work Order;Manage Change Requests;Project Manager;1;0;1;0;1;1
+163;371;Verify Changes in Build;Change Request;Manage Change Requests;Test Analyst;1;1;0;0;1;1
+164;371;Verify Changes in Build;Test Results;Manage Change Requests;Test Analyst;0;0;1;0;0;1
+165;373;Support Development;;;;0;1;1;0;1;1
+166;375;Create Development Workspace;Workspace;Change and Deliver Configuration Items;Any Role;1;0;0;1;1;0
+167;376;Make Changes;Workspace;Change and Deliver Configuration Items;Any Role;1;1;1;0;1;0
+168;377;Deliver Changes;Workspace;Change and Deliver Configuration Items;Any Role;1;1;1;1;0;1
+169;377;Deliver Changes;Project Repository;Change and Deliver Configuration Items;Any Role;0;0;0;1;0;0
+170;378;Update Workspace;Workspace;Change and Deliver Configuration Items;Any Role;0;1;0;0;0;0
+171;379;Create Baselines;Workspace;Change and Deliver Configuration Items;Integrator;1;1;1;0;1;1
+172;380;Promote Baselines;Workspace;Change and Deliver Configuration Items;Integrator;0;0;0;0;0;0
+173;380;Promote Baselines;Project Repository;Change and Deliver Configuration Items;Integrator;0;1;1;0;0;0
+174;382;Create Deployment Unit;Deployment Unit;Manage Baselines & Releases;Configuration Manager;1;1;1;1;1;0
+175;383;Create Baselines;Workspace;Manage Baselines & Releases;Integrator;1;0;0;0;0;1
+176;384;Promote Baselines;Workspace;Manage Baselines & Releases;Integrator;1;0;1;0;0;0
+177;384;Promote Baselines;Project Repository;Manage Baselines & Releases;Integrator;1;1;1;1;1;1
+178;386;Report on Configuration Status;Project Measurements;Monitor & Report Configuration Status;Configuration Manager;1;1;1;1;1;1
+179;387;Perform Configuration Audit;Configuration Audit Findings;Monitor & Report Configuration Status;Configuration Manager;1;0;1;1;1;1
+180;338;Develop Development Case;Development Case;Prepare Environment for an Iteration;Process Engineer;0;1;1;0;0;1
+181;339;Prepare Guidelines for the Project;Project Specific Guidelines;Prepare Environment for an Iteration;Process Engineer;0;0;1;1;1;1
+182;340;Develop Manual Styleguide;;;;0;0;1;1;1;0
+183;341;Prepare Templates for the Project;Project Specific Templates;Prepare Environment for an Iteration;Process Engineer;0;1;0;1;0;1
+184;342;Launch Development Process;;;;1;1;1;1;1;1
+185;343;Set Up Tools;Tools;Prepare Environment for an Iteration;Tool Specialist;0;1;0;0;0;1
+186;344;Verify Tool Configuration and Installation;Tools;Prepare Environment for an Iteration;Tool Specialist;1;0;1;0;1;0
