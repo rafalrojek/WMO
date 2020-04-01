@@ -1,6 +1,7 @@
 package sample.backend;
 
 import sample.model.CsvRow;
+import sample.model.enums.CategoriesEnum;
 
 import java.util.Comparator;
 import java.util.List;
@@ -36,6 +37,13 @@ public class InMemoryDatabase {
     public List<CsvRow> getByActivity(String activity){
         return data.stream()
                 .filter(el -> el.getActivity().equals(activity))
+                .sorted(Comparator.comparing(CsvRow::getActivityId))
+                .collect(Collectors.toList());
+    }
+
+    public List<CsvRow> getByCategory(CategoriesEnum category){
+        return data.stream()
+                .filter(el -> el.getCategories().contains(category))
                 .sorted(Comparator.comparing(CsvRow::getActivityId))
                 .collect(Collectors.toList());
     }
