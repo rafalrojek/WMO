@@ -1,16 +1,21 @@
 package sample.frontend;
-import javafx.beans.property.ReadOnlyStringWrapper;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.backend.CategoryEngine;
+import sample.backend.InMemoryDatabase;
+import sample.model.Category;
 import sample.model.EnteredValues;
+import sample.model.enums.CategoriesEnum;
 import sample.model.enums.FactorValues;
+
+import java.util.List;
 
 import static sample.model.enums.FactorValues.*;
 import static sample.model.enums.FactorsEnum.*;
 
 public class  Controller {
-    @FXML public TreeTableView table;
     @FXML public ToggleGroup MoneySize;
     @FXML public ToggleGroup TeamSize;
     @FXML public ToggleGroup TimeSize;
@@ -20,22 +25,24 @@ public class  Controller {
     @FXML public ToggleGroup InnovationSize;
     @FXML public ToggleGroup DevelopersSkills;
     @FXML public ToggleGroup QualitySize;
-    public Label typeName; //TODO: Tutaj wpisujemy typ projektu
-    private TreeItem<String> root = new TreeItem<>("Zadania");
+    @FXML public Label typeName; //TODO: Tutaj wpisujemy typ projektu
+    @FXML public ChoiceBox column;
+    @FXML public ChoiceBox row;
+    @FXML public TableView table;
+    private InMemoryDatabase database = new InMemoryDatabase();
+    private Category result;
+    private boolean started = false;
 
     @FXML
     public void initialize() {
-        //Creating a column
-        TreeTableColumn<String,String> column = new TreeTableColumn<>("Zadania");
-
-        //Defining cell content
-        column.setCellValueFactory((TreeTableColumn.CellDataFeatures<String, String> p) ->
-                new ReadOnlyStringWrapper(p.getValue().getValue()));
-        table.getColumns().add(column);
+        column.setDisable(true);
+        row.setDisable(true);
+        column.getItems().addAll("Wszystkie produkty", "Według aktywności", "Według roli");
+        column.getSelectionModel().select(0);
+        started = true;
     }
 
     public void Calculate() {
-        root.getChildren().removeAll();
         EnteredValues enteredValues = new EnteredValues()
                 .addFactor(DEVELOPERS_EXP, getValue(DevelopersSkills))
                 .addFactor(FIELD_KNOWLEDGE, getValue(ProblemKnowledge))
@@ -46,9 +53,20 @@ public class  Controller {
                 .addFactor(STABILITY, getValue(RequirementStability))
                 .addFactor(TEAM_SIZE,getValue(TeamSize))
                 .addFactor(TIME, getValue(TimeSize));
-        CategoryEngine engine = new CategoryEngine();
-        System.out.println(engine.checkCategory(enteredValues).getCategoryName());
-        typeName.setText(engine.checkCategory(enteredValues).getCategoryName());
+        if (enteredValues.isAllFine()) {
+            CategoryEngine engine = new CategoryEngine();
+            result = engine.checkCategory(enteredValues);
+            typeName.setText(result.getCategoryName());
+            column.setDisable(false);
+            column.getSelectionModel().select(0);
+            columnSelected();
+        }
+        else if (started) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd");
+            alert.setHeaderText("Nie wypełniono wszystkich wartości");
+            alert.showAndWait();
+        }
     }
 
     private FactorValues getValue(ToggleGroup tg) {
@@ -64,5 +82,36 @@ public class  Controller {
             }
         }
         return null;
+    }
+
+    public void columnSelected() {
+        if (!started) return;
+        if (column.getSelectionModel().isSelected(0)){
+            List list = database.getByCategory(CategoriesEnum.valueOf(result.getCategoryName().toUpperCase()));
+            table.getItems().clear();
+            table.getItems().addAll(list);
+            row.getItems().clear();
+            row.setDisable(true);
+        }
+        else if (column.getSelectionModel().isSelected(1)){
+            row.getItems().clear();
+            row.getItems().addAll(database.getAllActivities());
+            row.setDisable(false);
+        }
+        else if (column.getSelectionModel().isSelected(2)) {
+            row.getItems().clear();
+            row.getItems().addAll(database.getAllRoles());
+            row.setDisable(false);
+        }
+    }
+
+    public void rowSelected() {
+        if (row.getValue() == null || row.getValue().toString().isEmpty()) return;
+        else table.getItems().clear();
+
+        if (column.getSelectionModel().isSelected(1))
+            table.getItems().addAll(database.getByActivity(row.getValue().toString()));
+        else if (column.getSelectionModel().isSelected(2))
+            table.getItems().addAll(database.getByRole(row.getValue().toString()));
     }
 }

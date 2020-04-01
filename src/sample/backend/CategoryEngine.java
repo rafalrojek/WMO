@@ -9,7 +9,7 @@ import sample.model.enums.FactorsEnum;
 import java.util.*;
 
 public class CategoryEngine {
-    private List<Category> categories = new LinkedList<>();
+    private List<Category> categories;
 
     public CategoryEngine() {
         categories = Arrays.asList(new Buldog(),
