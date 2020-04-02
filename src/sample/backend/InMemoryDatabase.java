@@ -80,4 +80,8 @@ public class InMemoryDatabase {
     public List<String> getAllRoles(){
         return new LinkedList(data.stream().map(CsvRow::getRole).collect(Collectors.toSet()));
     }
+
+    public List<String> getAllProducts(){
+        return new LinkedList(data.stream().map(CsvRow::getProduct).collect(Collectors.toSet()));
+    }
 }

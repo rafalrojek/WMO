@@ -36,7 +36,7 @@ public class  Controller {
     public void initialize() {
         column.setDisable(true);
         row.setDisable(true);
-        column.getItems().addAll("Wszystkie produkty", "Według aktywności", "Według roli");
+        column.getItems().addAll("Wszystkie produkty", "Według aktywności", "Według roli", "Według produktu");
         column.getSelectionModel().select(0);
         started = true;
     }
@@ -103,6 +103,11 @@ public class  Controller {
             row.getItems().addAll(database.getAllRoles());
             row.setDisable(false);
         }
+        else if (column.getSelectionModel().isSelected(3)) {
+            row.getItems().clear();
+            row.getItems().addAll(database.getAllProducts());
+            row.setDisable(false);
+        }
     }
 
     public void rowSelected() {
@@ -113,5 +118,7 @@ public class  Controller {
             table.getItems().addAll(database.getByActivity(row.getValue().toString()));
         else if (column.getSelectionModel().isSelected(2))
             table.getItems().addAll(database.getByRole(row.getValue().toString()));
+        else if (column.getSelectionModel().isSelected(3))
+            table.getItems().addAll(database.getByProduct(row.getValue().toString()));
     }
 }
