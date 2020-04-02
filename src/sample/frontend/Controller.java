@@ -1,6 +1,5 @@
 package sample.frontend;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.backend.CategoryEngine;
@@ -25,7 +24,7 @@ public class  Controller {
     @FXML public ToggleGroup InnovationSize;
     @FXML public ToggleGroup DevelopersSkills;
     @FXML public ToggleGroup QualitySize;
-    @FXML public Label typeName; //TODO: Tutaj wpisujemy typ projektu
+    @FXML public Label typeName;
     @FXML public ChoiceBox column;
     @FXML public ChoiceBox row;
     @FXML public TableView table;
@@ -65,6 +64,7 @@ public class  Controller {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Błąd");
             alert.setHeaderText("Nie wypełniono wszystkich wartości");
+            alert.setContentText("Proszę o zaznaczenie wszystkich pól prze włączeniem wyznaczania");
             alert.showAndWait();
         }
     }
