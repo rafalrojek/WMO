@@ -1,8 +1,6 @@
 package sample.model.category;
-
 import sample.model.Category;
 import sample.model.enums.CategoriesEnum;
-
 import static sample.model.enums.FactorValues.*;
 import static sample.model.enums.FactorsEnum.*;
 

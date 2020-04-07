@@ -1,8 +1,6 @@
 package sample.backend;
-
 import sample.model.CsvRow;
 import sample.model.enums.CategoriesEnum;
-
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;

@@ -1,8 +1,6 @@
 package sample.backend;
-
 import sample.model.CsvRow;
 import sample.model.enums.CategoriesEnum;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -43,10 +41,9 @@ public class CsvReader {
         String activity = dataArray[4];
         String role = dataArray[5];
         if(getInt(dataArray[6]) == 1) categories.add(CategoriesEnum.CHIHUAHUA);
-        if(getInt(dataArray[7]) == 1) categories.add(CategoriesEnum.LABRADOR);
+        if(getInt(dataArray[7]) == 1) categories.add(CategoriesEnum.YORK);
         if(getInt(dataArray[8]) == 1) categories.add(CategoriesEnum.JAMNIK);
         if(getInt(dataArray[9]) == 1) categories.add(CategoriesEnum.BULDOG);
-        if(getInt(dataArray[10]) == 1) categories.add(CategoriesEnum.MASTIFF);
         if(getInt(dataArray[11]) == 1) categories.add(CategoriesEnum.ROTTWEILER);
         CsvRow data = new CsvRow();
         data.setId(id);

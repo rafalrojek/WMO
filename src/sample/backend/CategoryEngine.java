@@ -1,11 +1,9 @@
 package sample.backend;
-
 import sample.model.Category;
 import sample.model.EnteredValues;
 import sample.model.category.*;
 import sample.model.enums.FactorValues;
 import sample.model.enums.FactorsEnum;
-
 import java.util.*;
 
 public class CategoryEngine {
@@ -15,8 +13,7 @@ public class CategoryEngine {
         categories = Arrays.asList(new Buldog(),
                 new Chihuahua(),
                 new Jamnik(),
-                new Labrador(),
-                new Mastiff(),
+                new York(),
                 new Rottweiler());
     }
 

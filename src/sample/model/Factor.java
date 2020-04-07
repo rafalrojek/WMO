@@ -1,9 +1,7 @@
 package sample.model;
-
 import sample.model.enums.FactorValues;
 import sample.model.enums.FactorsEnum;
 import sample.model.factor.*;
-
 import java.util.Arrays;
 import java.util.List;
 

@@ -1,9 +1,6 @@
 package sample.model;
-
 import sample.model.enums.CategoriesEnum;
-
 import java.util.List;
-
 
 public class CsvRow {
     //ID ID Czynności	Czynności/Zadania	Produkty	Aktywność	Rola	Chihuahua

@@ -1,8 +1,6 @@
 package sample.model;
-
 import sample.model.enums.FactorValues;
 import sample.model.enums.FactorsEnum;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;

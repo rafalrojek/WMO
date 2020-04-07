@@ -5,8 +5,7 @@ public enum CategoriesEnum {
     CHIHUAHUA("Chihuahua"),
     DOGGO("Pieseł"),
     JAMNIK("Jamnik"),
-    LABRADOR("Labrador"),
-    MASTIFF("Mastiff"),
+    YORK("York"),
     ROTTWEILER("Rottweiler");
 
     private String name;

@@ -1,5 +1,4 @@
 package sample.frontend;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.backend.CategoryEngine;
@@ -8,9 +7,7 @@ import sample.model.Category;
 import sample.model.EnteredValues;
 import sample.model.enums.CategoriesEnum;
 import sample.model.enums.FactorValues;
-
 import java.util.List;
-
 import static sample.model.enums.FactorValues.*;
 import static sample.model.enums.FactorsEnum.*;
 
