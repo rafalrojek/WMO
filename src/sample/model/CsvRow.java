@@ -26,54 +26,56 @@ public class CsvRow {
                 '}';
     }
 
-    public int getId() { return id; }
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getParentId() {
         return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public String getTask() {
         return task;
     }
 
-    public String getProduct() {
-        return product;
-    }
-
-    public String getActivity() {
-        return activity;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public List<CategoriesEnum> getCategories() {
-        return categories;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
-    }
-
     public void setTask(String task) {
         this.task = task;
+    }
+
+    public String getProduct() {
+        return product;
     }
 
     public void setProduct(String product) {
         this.product = product;
     }
 
+    public String getActivity() {
+        return activity;
+    }
+
     public void setActivity(String activity) {
         this.activity = activity;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<CategoriesEnum> getCategories() {
+        return categories;
     }
 
     public void setCategories(List<CategoriesEnum> categories) {
