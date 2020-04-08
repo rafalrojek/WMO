@@ -7,18 +7,11 @@ import sample.model.enums.FactorsEnum;
 import java.util.*;
 
 public class CategoryEngine {
-    private List<Category> categories;
-
-    public CategoryEngine() {
-        categories = Arrays.asList(new Buldog(),
-                new Chihuahua(),
-                new Jamnik(),
-                new York(),
-                new Rottweiler());
-    }
+    private List<Category> categories = new LinkedList<>();
 
     public Category checkCategory(EnteredValues enteredValues){
         List<Result> result = new LinkedList<>();
+        setCategories(enteredValues);
         for(Category category : categories){
             double applying = isApplying(enteredValues,category);
             result.add(new Result(applying,category));
@@ -37,6 +30,19 @@ public class CategoryEngine {
             result += category.getFactors().get(factorsEnum).isApplied(enteredFactors.get(factorsEnum));
         }
         return result;
+    }
+
+    public void setCategories(EnteredValues enteredValues) {
+        categories.clear();
+        FactorValues formalizationLevel = enteredValues.getFactors().get(FactorsEnum.FORMALIZATION_LEVEL);
+        categories.add(new Rottweiler());
+        if(formalizationLevel.equals(FactorValues.ALOT)) return;
+        categories.add(new Buldog());
+        categories.add(new Jamnik());
+        if(formalizationLevel.equals(FactorValues.MEDIUM)) return;
+        categories.add(new York());
+        categories.add(new Chihuahua());
+        categories.remove(new Rottweiler());
     }
 
     private static class Result{

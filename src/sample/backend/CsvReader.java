@@ -53,9 +53,13 @@ public class CsvReader {
         CsvRow data = new CsvRow();
         data.setId(id);
         if(parentId != null) data.setParentId(parentId);
-        data.setTask(task);
+        if(activity == null || activity.isEmpty()){
+            data.setActivity(task);
+        }else{
+            data.setActivity(activity);
+            data.setTask(task);
+        }
         data.setProduct(product);
-        data.setActivity(activity);
         data.setRole(role);
         data.setCategories(categories);
         return data;

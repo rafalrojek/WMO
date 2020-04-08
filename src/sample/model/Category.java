@@ -23,4 +23,19 @@ public abstract class Category {
     public Map<FactorsEnum, Factor> getFactors() {
         return factors;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Category category = (Category) o;
+
+        return nameOfCategory == category.nameOfCategory;
+    }
+
+    @Override
+    public int hashCode() {
+        return nameOfCategory != null ? nameOfCategory.hashCode() : 0;
+    }
 }
