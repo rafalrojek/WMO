@@ -30,12 +30,16 @@ public class CsvReader {
             throw new IllegalStateException(e);
         }
     }
+    //ID	ID Task/Act	Czynności/Zadania	Produkty	Aktywność	Rola  Chihuahua, York, Jamnik, Buldog, Rottweiler
 
     private CsvRow parse(String line){
         List<CategoriesEnum> categories = new LinkedList<>();
         String[] dataArray = line.split(";");
-        int id = Integer.parseInt(dataArray[0]);
-        int activityId = Integer.parseInt(dataArray[1]);
+        Integer id = Integer.parseInt(dataArray[0]);
+        Integer parentId = null;
+        try{
+            parentId = Integer.parseInt(dataArray[1]);
+        }catch (NumberFormatException e){}
         String task = dataArray[2];
         String product = dataArray[3];
         String activity = dataArray[4];
@@ -44,10 +48,11 @@ public class CsvReader {
         if(getInt(dataArray[7]) == 1) categories.add(CategoriesEnum.YORK);
         if(getInt(dataArray[8]) == 1) categories.add(CategoriesEnum.JAMNIK);
         if(getInt(dataArray[9]) == 1) categories.add(CategoriesEnum.BULDOG);
-        if(getInt(dataArray[11]) == 1) categories.add(CategoriesEnum.ROTTWEILER);
+        if(getInt(dataArray[10]) == 1) categories.add(CategoriesEnum.ROTTWEILER);
+        if(id.equals(parentId)) System.out.println("Błąd: id = " + id + " parent = " + parentId);
         CsvRow data = new CsvRow();
         data.setId(id);
-        data.setActivityId(activityId);
+        if(parentId != null) data.setParentId(parentId);
         data.setTask(task);
         data.setProduct(product);
         data.setActivity(activity);

@@ -1,18 +1,20 @@
 package sample.backend;
 import sample.model.CsvRow;
 import sample.model.enums.CategoriesEnum;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class InMemoryDatabase {
 
     private List<CsvRow> data;
+    private Map<Integer, CsvRow> dataMap = new HashMap<>();
     private CsvReader csvReader = new CsvReader();
+    private Comparator<CsvRow> comparator = Comparator.comparing(CsvRow::getId);
 
     public InMemoryDatabase(){
         data = csvReader.read();
+        data.forEach(csvRow -> dataMap.put(csvRow.getId(),csvRow));
     }
 
     public List<CsvRow> getAll(){
@@ -20,55 +22,68 @@ public class InMemoryDatabase {
     }
 
     public List<CsvRow> getByProduct(String product){
-        return data.stream()
+        return transformList(data.stream()
                 .filter(el -> el.getProduct().equals(product))
-                .sorted(Comparator.comparing(CsvRow::getActivityId))
-                .collect(Collectors.toList());
+                .sorted(comparator)
+                .collect(Collectors.toList()));
     }
 
     public List<CsvRow> getByProduct(CategoriesEnum category, String product){
-        return data.stream()
+        return transformList(data.stream()
                 .filter(el -> el.getCategories().contains(category))
                 .filter(el -> el.getProduct().equals(product))
-                .sorted(Comparator.comparing(CsvRow::getActivityId))
-                .collect(Collectors.toList());
+                .sorted(comparator)
+                .collect(Collectors.toList()));
     }
 
     public List<CsvRow> getByRole(String role){
-        return data.stream()
+        return transformList(data.stream()
                 .filter(el -> el.getRole().equals(role))
-                .sorted(Comparator.comparing(CsvRow::getActivityId))
-                .collect(Collectors.toList());
+                .sorted(comparator)
+                .collect(Collectors.toList()));
     }
 
     public List<CsvRow> getByRole(CategoriesEnum category, String role){
-        return data.stream()
+        return transformList(data.stream()
                 .filter(el -> el.getCategories().contains(category))
                 .filter(el -> el.getRole().equals(role))
-                .sorted(Comparator.comparing(CsvRow::getActivityId))
-                .collect(Collectors.toList());
+                .sorted(comparator)
+                .collect(Collectors.toList()));
     }
 
     public List<CsvRow> getByActivity(String activity){
-        return data.stream()
+        return transformList(data.stream()
                 .filter(el -> el.getActivity().equals(activity))
-                .sorted(Comparator.comparing(CsvRow::getActivityId))
-                .collect(Collectors.toList());
+                .sorted(comparator)
+                .collect(Collectors.toList()));
     }
 
     public List<CsvRow> getByActivity(CategoriesEnum category, String activity){
-        return data.stream()
+        return transformList(data.stream()
                 .filter(el -> el.getCategories().contains(category))
                 .filter(el -> el.getActivity().equals(activity))
-                .sorted(Comparator.comparing(CsvRow::getActivityId))
-                .collect(Collectors.toList());
+                .sorted(comparator)
+                .collect(Collectors.toList()));
     }
 
     public List<CsvRow> getByCategory(CategoriesEnum category){
-        return data.stream()
+        return transformList(data.stream()
                 .filter(el -> el.getCategories().contains(category))
-                .sorted(Comparator.comparing(CsvRow::getActivityId))
-                .collect(Collectors.toList());
+                .sorted(comparator)
+                .collect(Collectors.toList()));
+    }
+
+    private List<CsvRow> transformList(List<CsvRow> dataList){
+        Set<CsvRow> set = new HashSet<>();
+        dataList.forEach(csvRow -> {
+            set.add(csvRow);
+            CsvRow parent = dataMap.get(csvRow.getParentId());
+            while(parent != null){
+                set.add(parent);
+                parent = dataMap.get(parent.getParentId());
+            }
+        });
+        return set.stream().sorted(comparator).collect(Collectors.toList());
     }
 
     public List<String> getAllActivities(){

@@ -3,9 +3,10 @@ import sample.model.enums.CategoriesEnum;
 import java.util.List;
 
 public class CsvRow {
-    //ID ID Czynności	Czynności/Zadania	Produkty	Aktywność	Rola	Chihuahua
-    private int id;
-    private int activityId;
+    //ID	ID Task/Act	Czynności/Zadania	Produkty	Aktywność	Rola  Chihuahua, York, Jamnik, Buldog, Rottweiler
+
+    private Integer id;
+    private Integer parentId;
     private String task;
     private String product;
     private String activity;
@@ -16,7 +17,7 @@ public class CsvRow {
     public String toString() {
         return "CsvRow{" +
                 "id=" + id +
-                ", activityId=" + activityId +
+                ", parentId=" + parentId +
                 ", task='" + task + '\'' +
                 ", product='" + product + '\'' +
                 ", activity='" + activity + '\'' +
@@ -27,8 +28,8 @@ public class CsvRow {
 
     public int getId() { return id; }
 
-    public int getActivityId() {
-        return activityId;
+    public Integer getParentId() {
+        return parentId;
     }
 
     public String getTask() {
@@ -55,8 +56,8 @@ public class CsvRow {
         this.id = id;
     }
 
-    public void setActivityId(int activityId) {
-        this.activityId = activityId;
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 
     public void setTask(String task) {

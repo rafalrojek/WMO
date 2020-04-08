@@ -20,6 +20,9 @@ public class TestDatabase {
         System.out.println("PRINTING ALL ACTIVITIES:\n");
         database.getAllActivities().forEach(System.out::println);
         System.out.println("\n\n\n");
-        System.out.println("PRINTING ALL ROLES:\n");
+        System.out.println("PRINTING ALL BY CATEGORY: CHIHUAHUA\n");
+        database.getByCategory(CategoriesEnum.CHIHUAHUA).forEach(System.out::println);
+        System.out.println("\n\n\n");
+
     }
 }
