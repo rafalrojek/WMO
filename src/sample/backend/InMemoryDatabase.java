@@ -97,4 +97,12 @@ public class InMemoryDatabase {
     public List<String> getAllProducts(){
         return new LinkedList(data.stream().map(CsvRow::getProduct).collect(Collectors.toSet()));
     }
+
+    public List<CsvRow> getData() {
+        return data;
+    }
+
+    public Map<Integer, CsvRow> getDataMap() {
+        return dataMap;
+    }
 }
