@@ -334,36 +334,14 @@
              </HBox>
          </bottom>
          <center>
-            <TableView fx:id="table" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+            <TreeTableView fx:id="table" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
                <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
-               <columns>
-                  <TableColumn text="Produkt">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="product" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn text="Czynność">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="task" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn text="Rola">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="role" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn text="Aktywność">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="activity" />
-                     </cellValueFactory>
-                  </TableColumn>
-               </columns>
                <BorderPane.margin>
                   <Insets left="10.0" right="20.0" />
                </BorderPane.margin>
-            </TableView>
+            </TreeTableView>
          </center>
          <top>
             <Label text="Wynik" BorderPane.alignment="CENTER">

@@ -1,9 +1,11 @@
 package sample.frontend;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import sample.backend.CategoryEngine;
 import sample.backend.InMemoryDatabase;
 import sample.model.Category;
+import sample.model.CsvRow;
 import sample.model.EnteredValues;
 import sample.model.enums.CategoriesEnum;
 import sample.model.enums.FactorValues;
@@ -24,7 +26,7 @@ public class  Controller {
     @FXML public Label typeName;
     @FXML public ChoiceBox column;
     @FXML public ChoiceBox row;
-    @FXML public TableView table;
+    @FXML public TreeTableView table;
     private InMemoryDatabase database = new InMemoryDatabase();
     private Category result;
     private boolean started = false;
@@ -36,6 +38,17 @@ public class  Controller {
         column.getItems().addAll("Wszystkie produkty", "Według aktywności", "Według roli", "Według produktu");
         column.getSelectionModel().select(0);
         started = true;
+
+        TreeTableColumn<CsvRow, String> activity = new TreeTableColumn<>("Aktywność");
+        activity.setCellValueFactory(new TreeItemPropertyValueFactory<>("activity"));
+        TreeTableColumn<CsvRow, String> task = new TreeTableColumn<>("Zadanie");
+        task.setCellValueFactory(new TreeItemPropertyValueFactory<>("task"));
+        TreeTableColumn<CsvRow, String> product = new TreeTableColumn<>("Produkt");
+        product.setCellValueFactory(new TreeItemPropertyValueFactory<>("product"));
+        TreeTableColumn<CsvRow, String> role = new TreeTableColumn<>("Rola");
+        role.setCellValueFactory(new TreeItemPropertyValueFactory<>("role"));
+
+        table.getColumns().addAll(activity, task, product, role);
     }
 
     public void Calculate() {
@@ -84,9 +97,11 @@ public class  Controller {
     public void columnSelected() {
         if (!started) return;
         if (column.getSelectionModel().isSelected(0)){
-            List list = database.getByCategory(CategoriesEnum.valueOf(result.getCategoryName().toUpperCase()));
-            table.getItems().clear();
-            table.getItems().addAll(list);
+            List<CsvRow> list = database.getByCategory(CategoriesEnum.valueOf(result.getCategoryName().toUpperCase()));
+            TreeItem<CsvRow> root = new TreeItem(new CsvRow());
+            list.forEach(v -> root.getChildren().add(new TreeItem(v)));
+            table.setRoot(root);
+            table.setShowRoot(false);
             row.getItems().clear();
             row.setDisable(true);
         }
@@ -109,13 +124,14 @@ public class  Controller {
 
     public void rowSelected() {
         if (row.getValue() == null || row.getValue().toString().isEmpty()) return;
-        else table.getItems().clear();
+        TreeItem<CsvRow> root = new TreeItem(new CsvRow());
 
         if (column.getSelectionModel().isSelected(1))
-            table.getItems().addAll(database.getByActivity(row.getValue().toString()));
+            database.getByActivity(row.getValue().toString()).forEach(v -> root.getChildren().add(new TreeItem(v)));
         else if (column.getSelectionModel().isSelected(2))
-            table.getItems().addAll(database.getByRole(row.getValue().toString()));
+            database.getByRole(row.getValue().toString()).forEach(v -> root.getChildren().add(new TreeItem(v)));
         else if (column.getSelectionModel().isSelected(3))
-            table.getItems().addAll(database.getByProduct(row.getValue().toString()));
+            database.getByProduct(row.getValue().toString()).forEach(v -> root.getChildren().add(new TreeItem(v)));
+        table.setRoot(root);
     }
 }
