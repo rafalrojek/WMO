@@ -30,6 +30,7 @@ public class  Controller {
     @FXML public ChoiceBox row;
     @FXML public TreeTableView table;
     public Button extendButton;
+    public Label taskNumber;
     private InMemoryDatabase database;
     private Category result;
     private boolean started = false;
@@ -109,6 +110,7 @@ public class  Controller {
             table.setRoot(fxTreeCreator.createTree(list));
             row.getItems().clear();
             row.setDisable(true);
+            taskNumber.setText(""+countTasks(list)); //TODO: Repair this
         }
         else if (column.getSelectionModel().isSelected(1)){
             row.getItems().clear();
@@ -129,12 +131,15 @@ public class  Controller {
 
     public void rowSelected() {
         if (row.getValue() == null || row.getValue().toString().isEmpty()) return;
-        else if (column.getSelectionModel().isSelected(1))
-            table.setRoot(fxTreeCreator.createTree(database.getByActivity(row.getValue().toString())));
+        List<CsvRow> list;
+        if (column.getSelectionModel().isSelected(1))
+            list = database.getByActivity(row.getValue().toString());
         else if (column.getSelectionModel().isSelected(2))
-            table.setRoot(fxTreeCreator.createTree(database.getByRole(row.getValue().toString())));
-        else if (column.getSelectionModel().isSelected(3))
-            table.setRoot(fxTreeCreator.createTree(database.getByProduct(row.getValue().toString())));
+            list = database.getByRole(row.getValue().toString());
+        else
+            list = database.getByProduct(row.getValue().toString());
+        table.setRoot(fxTreeCreator.createTree(list));
+        taskNumber.setText(""+countTasks(list)); //TODO: Repair this
     }
 
     public void Extend() {
@@ -147,5 +152,13 @@ public class  Controller {
             if (!treeItem.getChildren().isEmpty()) extend(item);
             item.setExpanded(!item.isExpanded());
         }
+    }
+
+    private int countTasks (List<CsvRow> list) {
+        int i = 0;
+        for (CsvRow csvRow: list) {
+            if (!csvRow.getProduct().isEmpty()) i++;
+        }
+        return i;
     }
 }
