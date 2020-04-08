@@ -49,6 +49,7 @@ public class  Controller {
         role.setCellValueFactory(new TreeItemPropertyValueFactory<>("role"));
 
         table.getColumns().addAll(activity, task, product, role);
+        table.setShowRoot(false);
     }
 
     public void Calculate() {
@@ -98,10 +99,9 @@ public class  Controller {
         if (!started) return;
         if (column.getSelectionModel().isSelected(0)){
             List<CsvRow> list = database.getByCategory(CategoriesEnum.valueOf(result.getCategoryName().toUpperCase()));
-            TreeItem<CsvRow> root = new TreeItem(new CsvRow());
-            list.forEach(v -> root.getChildren().add(new TreeItem(v)));
+            TreeItem<CsvRow> root = getTable(list);
             table.setRoot(root);
-            table.setShowRoot(false);
+            //table.setShowRoot(false);
             row.getItems().clear();
             row.setDisable(true);
         }
@@ -134,4 +134,28 @@ public class  Controller {
             database.getByProduct(row.getValue().toString()).forEach(v -> root.getChildren().add(new TreeItem(v)));
         table.setRoot(root);
     }
+
+    private TreeItem<CsvRow> getTable (List<CsvRow> list) {
+        TreeItem<CsvRow> root = new TreeItem(new CsvRow());
+        TreeItem<CsvRow> parent = root;
+        for (CsvRow row: list) {
+            TreeItem<CsvRow> tmp = new TreeItem<>(row);
+            if (row.getProduct() != null) {
+                parent.getChildren().add(tmp);
+            }
+            else if (row.getActivity() != null) {
+                while (!parent.getValue().getTask().equals(row.getActivity()) && parent.getParent() != null)
+                    parent = parent.getParent();
+                parent.getChildren().add(tmp);
+                parent = tmp;
+            }
+            else {
+                root.getChildren().add(tmp);
+                parent = tmp;
+            }
+        }
+        return root;
+    }
+
+
 }
