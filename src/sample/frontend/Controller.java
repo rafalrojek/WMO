@@ -1,8 +1,10 @@
 package sample.frontend;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import sample.backend.CategoryEngine;
+import sample.backend.FxTreeCreator;
 import sample.backend.InMemoryDatabase;
 import sample.model.Category;
 import sample.model.CsvRow;
@@ -27,12 +29,16 @@ public class  Controller {
     @FXML public ChoiceBox column;
     @FXML public ChoiceBox row;
     @FXML public TreeTableView table;
-    private InMemoryDatabase database = new InMemoryDatabase();
+    public Button extendButton;
+    private InMemoryDatabase database;
     private Category result;
     private boolean started = false;
+    private FxTreeCreator fxTreeCreator;
 
     @FXML
     public void initialize() {
+        database = new InMemoryDatabase();
+        fxTreeCreator = new FxTreeCreator(database);
         column.setDisable(true);
         row.setDisable(true);
         column.getItems().addAll("Wszystkie produkty", "Według aktywności", "Według roli", "Według produktu");
@@ -69,6 +75,7 @@ public class  Controller {
             typeName.setText(result.getCategoryName());
             column.setDisable(false);
             column.getSelectionModel().select(0);
+            extendButton.setDisable(false);
             columnSelected();
         }
         else if (started) {
@@ -99,9 +106,7 @@ public class  Controller {
         if (!started) return;
         if (column.getSelectionModel().isSelected(0)){
             List<CsvRow> list = database.getByCategory(CategoriesEnum.valueOf(result.getCategoryName().toUpperCase()));
-            TreeItem<CsvRow> root = getTable(list);
-            table.setRoot(root);
-            //table.setShowRoot(false);
+            table.setRoot(fxTreeCreator.createTree(list));
             row.getItems().clear();
             row.setDisable(true);
         }
@@ -124,38 +129,23 @@ public class  Controller {
 
     public void rowSelected() {
         if (row.getValue() == null || row.getValue().toString().isEmpty()) return;
-        TreeItem<CsvRow> root = new TreeItem(new CsvRow());
-
-        if (column.getSelectionModel().isSelected(1))
-            database.getByActivity(row.getValue().toString()).forEach(v -> root.getChildren().add(new TreeItem(v)));
+        else if (column.getSelectionModel().isSelected(1))
+            table.setRoot(fxTreeCreator.createTree(database.getByActivity(row.getValue().toString())));
         else if (column.getSelectionModel().isSelected(2))
-            database.getByRole(row.getValue().toString()).forEach(v -> root.getChildren().add(new TreeItem(v)));
+            table.setRoot(fxTreeCreator.createTree(database.getByRole(row.getValue().toString())));
         else if (column.getSelectionModel().isSelected(3))
-            database.getByProduct(row.getValue().toString()).forEach(v -> root.getChildren().add(new TreeItem(v)));
-        table.setRoot(root);
+            table.setRoot(fxTreeCreator.createTree(database.getByProduct(row.getValue().toString())));
     }
 
-    private TreeItem<CsvRow> getTable (List<CsvRow> list) {
-        TreeItem<CsvRow> root = new TreeItem(new CsvRow());
-        TreeItem<CsvRow> parent = root;
-        for (CsvRow row: list) {
-            TreeItem<CsvRow> tmp = new TreeItem<>(row);
-            if (row.getProduct() != null) {
-                parent.getChildren().add(tmp);
-            }
-            else if (row.getActivity() != null) {
-                while (!parent.getValue().getTask().equals(row.getActivity()) && parent.getParent() != null)
-                    parent = parent.getParent();
-                parent.getChildren().add(tmp);
-                parent = tmp;
-            }
-            else {
-                root.getChildren().add(tmp);
-                parent = tmp;
-            }
+    public void Extend() {
+        TreeItem<CsvRow> treeItem = table.getRoot();
+        extend(treeItem);
+    }
+
+    private void extend (TreeItem<CsvRow> treeItem) {
+        for (TreeItem<CsvRow> item: treeItem.getChildren()){
+            if (!treeItem.getChildren().isEmpty()) extend(item);
+            item.setExpanded(!item.isExpanded());
         }
-        return root;
     }
-
-
 }

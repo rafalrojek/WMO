@@ -21,6 +21,7 @@ public class FxTreeCreator {
         clear();
         list.forEach(csvRow -> {
             TreeItem<CsvRow> treeItem = new TreeItem<>(csvRow);
+            treeItem.setExpanded(true);
             treeMap.putIfAbsent(csvRow.getId(), treeItem);
             if(csvRow.getParentId() != null) {
                 if(treeMap.get(csvRow.getParentId()) == null){
