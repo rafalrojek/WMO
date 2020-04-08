@@ -8,8 +8,8 @@ import sample.model.CsvRow;
 public class TreeTest {
     public static void main(String[] args) {
         InMemoryDatabase database = new InMemoryDatabase();
-        FxTreeCreator fxTreeCreator = new FxTreeCreator();
-        TreeItem<CsvRow> root = fxTreeCreator.createTree(database.getData(), database.getDataMap());
+        FxTreeCreator fxTreeCreator = new FxTreeCreator(database);
+        TreeItem<CsvRow> root = fxTreeCreator.createTree(database.getByProduct("Work Order"));
         printTreeItem(root, 0);
     }
 
