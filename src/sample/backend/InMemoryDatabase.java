@@ -91,12 +91,39 @@ public class InMemoryDatabase {
         return new LinkedList(data.stream().map(CsvRow::getActivity).collect(Collectors.toSet()));
     }
 
+    public List<String> getAllActivities(CategoriesEnum categoriesEnum){
+        return new LinkedList(data.stream()
+                .filter(csvRow -> csvRow.getCategories().contains(categoriesEnum)).map(CsvRow::getActivity).collect(Collectors.toSet()));
+    }
+
     public List<String> getAllRoles(){
-        return new LinkedList(data.stream().map(CsvRow::getRole).collect(Collectors.toSet()));
+        return new LinkedList(
+                data.stream()
+                .map(CsvRow::getRole)
+                .collect(Collectors.toSet())
+        );
+    }
+
+    public List<String> getAllRoles(CategoriesEnum categoriesEnum){
+        return new LinkedList(
+                data.stream()
+                .filter(csvRow -> csvRow.getCategories().contains(categoriesEnum))
+                .map(CsvRow::getRole)
+                .collect(Collectors.toSet())
+        );
     }
 
     public List<String> getAllProducts(){
         return new LinkedList(data.stream().map(CsvRow::getProduct).collect(Collectors.toSet()));
+    }
+
+    public List<String> getAllProducts(CategoriesEnum categoriesEnum){
+        return new LinkedList(
+                data.stream()
+                .filter(csvRow -> csvRow.getCategories().contains(categoriesEnum))
+                .map(CsvRow::getProduct)
+                .collect(Collectors.toSet())
+        );
     }
 
     public List<CsvRow> getData() {

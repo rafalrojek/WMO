@@ -330,8 +330,8 @@
    <center>
       <BorderPane BorderPane.alignment="CENTER">
          <bottom>
-             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                 <Label text="Ilość produktów   ">
+             <HBox alignment="CENTER" prefHeight="130.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                 <Label fx:id="statsTitle" text="Razem:  ">
                      <font>
                          <Font size="18.0"/>
                      </font>

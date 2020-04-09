@@ -6,6 +6,7 @@ import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import sample.backend.CategoryEngine;
 import sample.backend.FxTreeCreator;
 import sample.backend.InMemoryDatabase;
+import sample.backend.StatsCounter;
 import sample.model.Category;
 import sample.model.CsvRow;
 import sample.model.EnteredValues;
@@ -30,6 +31,7 @@ public class  Controller {
     @FXML public ChoiceBox row;
     @FXML public TreeTableView table;
     public Button extendButton;
+    public Label statsTitle;
     public Label taskNumber;
     private InMemoryDatabase database;
     private Category result;
@@ -44,6 +46,7 @@ public class  Controller {
         row.setDisable(true);
         column.getItems().addAll("Wszystkie produkty", "Według aktywności", "Według roli", "Według produktu");
         column.getSelectionModel().select(0);
+        statsTitle.setVisible(false);
         started = true;
 
         TreeTableColumn<CsvRow, String> activity = new TreeTableColumn<>("Aktywność");
@@ -82,10 +85,11 @@ public class  Controller {
         else if (started) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Błąd");
-            alert.setHeaderText("Nie wypełniono wszystkich wartości");
-            alert.setContentText("Proszę o zaznaczenie wszystkich pól prze włączeniem wyznaczania");
+            alert.setHeaderText("Nie wprowadzono wszystkich czynników");
+            alert.setContentText("Proszę o wprowadzenie wszystkich czynników przed wyznaczeniem kategorii projektu");
             alert.showAndWait();
         }
+        statsTitle.setVisible(true);
     }
 
     private FactorValues getValue(ToggleGroup tg) {
@@ -105,26 +109,28 @@ public class  Controller {
 
     public void columnSelected() {
         if (!started) return;
+        CategoriesEnum category = CategoriesEnum.valueOf(result.getCategoryName().toUpperCase());
         if (column.getSelectionModel().isSelected(0)){
-            List<CsvRow> list = database.getByCategory(CategoriesEnum.valueOf(result.getCategoryName().toUpperCase()));
+            List<CsvRow> list = database.getByCategory(category);
             table.setRoot(fxTreeCreator.createTree(list));
             row.getItems().clear();
             row.setDisable(true);
-            taskNumber.setText(""+countTasks(list)); //TODO: Repair this
+            setStatistics(list);
+            //taskNumber.setText(""+countTasks(list)); //TODO: Repair this
         }
         else if (column.getSelectionModel().isSelected(1)){
             row.getItems().clear();
-            row.getItems().addAll(database.getAllActivities());
+            row.getItems().addAll(database.getAllActivities(category));
             row.setDisable(false);
         }
         else if (column.getSelectionModel().isSelected(2)) {
             row.getItems().clear();
-            row.getItems().addAll(database.getAllRoles());
+            row.getItems().addAll(database.getAllRoles(category));
             row.setDisable(false);
         }
         else if (column.getSelectionModel().isSelected(3)) {
             row.getItems().clear();
-            row.getItems().addAll(database.getAllProducts());
+            row.getItems().addAll(database.getAllProducts(category));
             row.setDisable(false);
         }
     }
@@ -139,7 +145,7 @@ public class  Controller {
         else
             list = database.getByProduct(row.getValue().toString());
         table.setRoot(fxTreeCreator.createTree(list));
-        taskNumber.setText(""+countTasks(list)); //TODO: Repair this
+        setStatistics(list);
     }
 
     public void Extend() {
@@ -154,11 +160,11 @@ public class  Controller {
         }
     }
 
-    private int countTasks (List<CsvRow> list) {
-        int i = 0;
-        for (CsvRow csvRow: list) {
-            if (!csvRow.getProduct().isEmpty()) i++;
-        }
-        return i;
+    private void setStatistics(List<CsvRow> list){
+        int activities = StatsCounter.countActivities(list);
+        int tasks = StatsCounter.countTasks(list);
+        int products = StatsCounter.countProducts(list);
+        int roles = StatsCounter.countRoles(list);
+        taskNumber.setText("Aktywności : " + activities + "\nZadania : " + tasks + "\nProducts : " + products + "\nRoles : " + roles);
     }
 }
