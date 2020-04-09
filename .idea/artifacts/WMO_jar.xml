@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="WMO:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WMO_jar</output-path>
+    <root id="archive" name="WMO.jar">
+      <element id="module-output" name="WMO" />
+    </root>
+  </artifact>
+</component>

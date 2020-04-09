@@ -9,9 +9,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("frontend/main.fxml"));
 
-        root.getStylesheets().add(getClass().getResource("bootstrap3.css").toExternalForm());
+        root.getStylesheets().add(getClass().getResource("frontend/bootstrap3.css").toExternalForm());
         primaryStage.setScene(new Scene(root, 1300, 800));
         primaryStage.show();
     }

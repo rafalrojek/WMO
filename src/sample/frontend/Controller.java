@@ -165,6 +165,6 @@ public class  Controller {
         int tasks = StatsCounter.countTasks(list);
         int products = StatsCounter.countProducts(list);
         int roles = StatsCounter.countRoles(list);
-        taskNumber.setText("Aktywności : " + activities + "\nZadania : " + tasks + "\nProducts : " + products + "\nRoles : " + roles);
+        taskNumber.setText("Aktywności: " + activities + "  Zadania: " + tasks + "  Produkty: " + products + "  Role: " + roles);
     }
 }

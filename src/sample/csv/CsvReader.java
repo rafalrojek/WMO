@@ -1,9 +1,9 @@
-package sample.backend;
+package sample.csv;
 import sample.model.CsvRow;
 import sample.model.enums.CategoriesEnum;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
+import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,8 +12,8 @@ public class CsvReader {
     public List<CsvRow> read(){
         try {
             LinkedList<CsvRow> data = new LinkedList<>();
-            FileReader reader = new FileReader("Dane do programu.csv");
-            BufferedReader br = new BufferedReader(reader);
+            InputStreamReader isr = new InputStreamReader(getClass().getResourceAsStream("data.csv"));
+            BufferedReader br = new BufferedReader(isr);
             String line;
             while ((line = br.readLine()) != null) {
                 try{
